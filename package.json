@@ -1,0 +1,77 @@
+{
+  "name": "comark-wikilink",
+  "version": "0.1.0",
+  "description": "Wikilink syntax plugin for Comark.",
+  "keywords": [
+    "comark",
+    "comark-plugin",
+    "markdown",
+    "wiki",
+    "wikilink"
+  ],
+  "homepage": "https://github.com/shiguri-01/comark-wikilink#readme",
+  "bugs": {
+    "url": "https://github.com/shiguri-01/comark-wikilink/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "shiguri",
+    "url": "https://github.com/shiguri-01"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiguri-01/comark-wikilink.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build",
+    "prepare": "vp config",
+    "bump": "bumpp"
+  },
+  "devDependencies": {
+    "bumpp": "^11.1.0",
+    "comark": "^0.6.2",
+    "markdown-exit": "^1.3.0",
+    "typescript": "^7.0.2",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "comark": "^0.6.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.3.4",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "24.21.0",
+      "onFail": "download"
+    }
+  },
+  "inlinedDependencies": {
+    "entities": "7.0.1",
+    "linkify-it": "5.0.2",
+    "markdown-exit": "1.3.0",
+    "mdurl": "2.1.0",
+    "punycode.js": "2.3.1",
+    "uc.micro": "2.1.0"
+  }
+}
