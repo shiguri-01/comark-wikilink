@@ -41,8 +41,8 @@ jobs:
       - name: Test
         run: vp run test
 
-      - name: Publish package
-        run: vp pm publish --no-git-checks --provenance
+      - name: Stage package for npm publishing
+        run: vp pm stage publish --provenance
 
       - name: Create GitHub Release
         env:
