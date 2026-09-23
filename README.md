@@ -33,8 +33,8 @@ They can be rendered and customized through the same pipeline as other links, wi
 ```ts
 {
   mode: "a";
-  resolveHref?: (target: string) => string | null;
-  resolveLabel?: (target: string) => string | null;
+  resolveHref?: ((target: string) => string) | null;
+  resolveLabel?: ((target: string) => string) | null;
 }
 ```
 
