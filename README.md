@@ -33,15 +33,15 @@ They can be rendered and customized through the same pipeline as other links, wi
 ```ts
 {
   mode: "a";
-  resolveHref?: ((target: string) => string) | null;
-  resolveLabel?: ((target: string) => string) | null;
+  resolveHref?: ((target: string) => string) | undefined;
+  resolveLabel?: ((target: string) => string) | undefined;
 }
 ```
 
-| Option         | Default | Description                                                                                                                            |
-| :------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolveHref`  | `null`  | A function that transforms a wikilink target into the `href` used by the generated `<a>` element. If `null`, the target is used as-is. |
-| `resolveLabel` | `null`  | A function that resolves the label displayed for wikilinks that do not specify an explicit label. If `null`, the target is used as-is. |
+| Option         | Default     | Description                                                                                                                                            |
+| :------------- | :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolveHref`  | `undefined` | A function that transforms a wikilink target into the `href` used by the generated `<a>` element. If omitted or `undefined`, the target is used as-is. |
+| `resolveLabel` | `undefined` | A function that resolves the label displayed for wikilinks that do not specify an explicit label. If omitted or `undefined`, the target is used as-is. |
 
 ## `component` mode
 

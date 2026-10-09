@@ -31,21 +31,17 @@ type AnchorConfig = {
   /**
    * Resolves the `href` attribute from the wikilink target.
    *
-   * If `null`, the `target` is used as-is.
-   *
-   * @default null
+   * If omitted or `undefined`, the `target` is used as-is.
    */
-  resolveHref?: ((target: string) => string) | null;
+  resolveHref?: ((target: string) => string) | undefined;
 
   /**
    * Resolves the label displayed for the wikilink.
    *
    * This is only used when the wikilink does not specify an explicit label.
-   * If `null`, the target is used as the label.
-   *
-   * @default null
+   * If omitted or `undefined`, the target is used as the label.
    */
-  resolveLabel?: ((target: string) => string) | null;
+  resolveLabel?: ((target: string) => string) | undefined;
 };
 
 /**
