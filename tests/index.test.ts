@@ -31,6 +31,31 @@ async function parseWithoutWikilink(source: string) {
 }
 
 describe("component mode", () => {
+  it("keeps adjacent components separate and preserves surrounding text", async () => {
+    expect(await parseWithWikilinkComponent("before [[one]][[two|Two]] after")).toEqual([
+      [
+        "p",
+        {},
+        "before ",
+        ["wikilink", { target: "one" }],
+        ["wikilink", { target: "two", label: "Two" }],
+        " after",
+      ],
+    ]);
+  });
+
+  it("applies Comark attributes to a wikilink component", async () => {
+    expect(await parseWithWikilinkComponent("[[target]]{.wiki}")).toEqual([
+      ["p", {}, ["wikilink", { target: "target", class: "wiki" }]],
+    ]);
+  });
+
+  it("preserves Comark inline spans alongside wikilinks", async () => {
+    expect(await parseWithWikilinkComponent("[text]{.note} [[target]]")).toEqual([
+      ["p", {}, ["span", { class: "note" }, "text"], " ", ["wikilink", { target: "target" }]],
+    ]);
+  });
+
   it("parses [[target]] into a wikilink node without label", async () => {
     const nodes = await parseWithWikilinkComponent("[[target]]");
     expect(nodes).toEqual([["p", {}, ["wikilink", { target: "target" }]]]);

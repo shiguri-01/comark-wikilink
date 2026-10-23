@@ -68,18 +68,11 @@ function pushAnchorToken(
 }
 
 function pushComponentToken(state: StateInline, { target, label }: Wikilink): void {
-  const openToken = state.push("mdc_inline_component", "wikilink", 1);
-  openToken.markup = "[[";
-
-  state.push("mdc_inline_component", "wikilink", -1);
-
-  // close直後にmdc_inline_propsを置くと、
-  // Comark側がコンポーネントのattrsとして扱ってくれる
-  const propsToken = state.push("mdc_inline_props", "", 0);
-  propsToken.hidden = true;
-  propsToken.attrSet("target", target);
+  const token = state.push("mdc_inline_component", "wikilink", 0);
+  token.markup = "[[";
+  token.attrSet("target", target);
   if (label !== null) {
-    propsToken.attrSet("label", label);
+    token.attrSet("label", label);
   }
 }
 
@@ -187,7 +180,7 @@ const createWikilinkRule =
  */
 export default defineComarkPlugin<WikilinkConfig>((config = { mode: "a" }) => {
   const plugin: MarkdownItPlugin = (md) => {
-    md.inline.ruler.before("link", "wikilink", createWikilinkRule(config));
+    md.inline.ruler.before("comark_inline_span", "wikilink", createWikilinkRule(config));
   };
 
   return {
