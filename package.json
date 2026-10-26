@@ -1,6 +1,6 @@
 {
   "name": "comark-wikilink",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Wikilink syntax plugin for Comark.",
   "keywords": [
     "comark",
